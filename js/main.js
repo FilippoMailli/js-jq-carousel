@@ -2,6 +2,8 @@ $(document).ready(function() {
 
     $('.next').click(nextSlide);
     $('.prev').click(prevSlide);
+    $('.play').click(playbtn);
+    $('.stop').click(stopbtn);
 
     function nextSlide() {
         if($('.images img.active').hasClass('last') ) {
@@ -56,6 +58,30 @@ $(document).ready(function() {
             pallinoAttivo.removeClass('active');
             prevPallino.addClass('active');
         }
+    }
+
+    var secondi = 10;
+    var clock;
+
+    function playbtn() {
+        $('.stop').removeClass('acceso');
+        $('.play').addClass('acceso');
+            clock = setInterval(function() {
+                nextSlide();
+                secondi--;
+                if(secondi == 0) {
+                    clearInterval(clock);
+                    $('.play').removeClass('acceso');
+                    $('.stop').addClass('acceso');
+                }
+            }, 1000)
+    }
+
+    function stopbtn() {
+        $('.play').removeClass('acceso');
+        $('.stop').addClass('acceso');
+        clearInterval(clock);
+        secondi = 10;
     }
 
 });
