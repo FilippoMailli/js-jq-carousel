@@ -84,4 +84,26 @@ $(document).ready(function() {
         secondi = 10;
     }
 
+    $('.images').mouseenter(function() {
+        $('.play').removeClass('acceso');
+        $('.stop').addClass('acceso');
+        clearInterval(clock);
+        secondi = 10;
+    });
+
+    $('.images').mouseleave(function() {
+        playbtn();
+    });
+
+
+//Altro metodo, posso usare questa funzione ogni volta che ne ho bisogno al posto della variabile secondi
+
+//stopTimer();
+
+    function stopTimer() {
+        var stop = setTimeout(function(){
+            clearInterval(clock);
+        }, 5000);
+    }
+
 });
