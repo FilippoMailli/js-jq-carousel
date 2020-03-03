@@ -106,4 +106,14 @@ $(document).ready(function() {
         }, 5000);
     }
 
+    $(".slider-nav i").click(function() {
+        $(".slider-nav i").removeClass('active');
+        $(this).addClass('active');
+
+        var posizione = $(this).index();
+        $('.images img.active').removeClass('active');
+        $('.images img').eq(posizione).addClass('active');
+        stopbtn();
+    });
+
 });
